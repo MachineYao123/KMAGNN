@@ -1,0 +1,45 @@
+data:
+  dataset_dir: "../datasets/movielens_20m"
+  split_strategy: "temporal"
+  test_ratio: 0.2
+  valid_ratio: 0.1
+  require_kg: true
+
+model:
+  embedding_dim: 256
+  num_layers: 3
+  num_heads: 4
+  dropout: 0.2
+  retained_neighbors: 20
+  max_neighbors: null
+  neighbor_gamma: 0.6
+  jaccard_mode: "exact"
+  predictor: "mlp"
+  max_frontier_nodes: null
+
+training:
+  seed: 42
+  device: null
+  epochs: 100
+  batch_size: 512
+  lr: 0.001
+  lambda_cl: 0.3
+  lambda_listnet: 0.1
+  lambda_l2: 0.00001
+  temperature: 0.2
+  num_negatives: 7
+  negative_strategy: "adaptive"
+  hard_start_epoch: 11
+  hard_candidate_pool_size: 128
+  hard_pool_size: 32
+  adaptive_min_warmup: 10
+  adaptive_max_warmup: 15
+  adaptive_patience: 3
+  adaptive_min_delta: 0.001
+  adaptive_grad_cv_threshold: 0.05
+  eval_every: 5
+  eval_negatives: 100
+  early_stop_patience: 25
+  grad_clip: 1.0
+  output_dir: "runs/default"
+
